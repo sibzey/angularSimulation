@@ -1,0 +1,21 @@
+<h1 class="baslik" style="color: rgb(25, 163, 85); letter-spacing: 3px;text-align: center;">Product Table</h1>
+<table class="table table-success table-striped mb-5">
+    <thead>
+        <tr style="padding: 5px; font-weight: bolder; text-align: center;">
+            <td>Product ID</td>
+            <td>Product Name</td>
+            <td>Category Id</td>
+            <td>Unit Price</td>
+        </tr>
+    </thead>
+    <tbody>
+    <tr style="text-align: center;" *ngFor="let item of products " >
+        <td>{{item.productId}}</td>
+        <td>{{item.productName}}</td>
+        <td>{{item.CategoryId}}</td>
+        <td>{{item.UnitPrice}}</td>
+        
+    </tr>
+</tbody>
+</table>
+<hr style="border: solid black 5px;">
