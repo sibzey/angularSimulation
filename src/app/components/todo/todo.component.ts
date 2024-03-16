@@ -3,21 +3,21 @@ import { Todo } from '../../models/todo';
 
 import { CommonModule } from '@angular/common';
 
-import { TodoService } from '../../services/todo.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
 @Component({
   selector: 'mytodo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements OnInit {
   
   todos:Todo[]=[];
-  constructor(private todoService: TodoService ) { }
+  constructor(private httpClient : HttpClient ) { }
 
   ngOnInit(): void {
     this.getTodos();
@@ -25,7 +25,8 @@ export class TodoComponent implements OnInit {
 
   getTodos(){
  
-    this.todoService.getAll().subscribe(response=>{
+    this.httpClient.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+    .subscribe(response=>{
       this.todos=response
     })
   }
