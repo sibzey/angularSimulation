@@ -1,9 +1,19 @@
+<div class="container mt-3">
 <app-navi></app-navi>
 
-<app-product></app-product>
+<div class="row">
+    <div class="col-md-3">
+        <app-category></app-category>
+    </div>
+    <div class="col-md-9">
+    <app-product></app-product>
+  
+    </div>
+   
+    <hr style="border: solid black 5px;">
 
-<app-category></app-category>
+</div>
 
-
-
+<mytodo></mytodo>
 <router-outlet></router-outlet>
+</div>
