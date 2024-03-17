@@ -1,34 +1,31 @@
-import { Component, NgModuleRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/todo';
 
 import { CommonModule } from '@angular/common';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TodoService } from '../../services/todo.service';
+
 
 
 
 @Component({
   selector: 'mytodo',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements OnInit {
   
   todos:Todo[]=[];
-  constructor(private httpClient : HttpClient ) { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.getTodos();
   }
 
   getTodos(){
- 
-    this.httpClient.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
-    .subscribe(response=>{
-      this.todos=response
-    })
+   this.todoService.getAlltodos().subscribe(response=>{this.todos=response;})
   }
 
 }
